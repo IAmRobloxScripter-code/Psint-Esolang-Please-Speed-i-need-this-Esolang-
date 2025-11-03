@@ -160,11 +160,11 @@ homeless
 ```
 ---
 ## How to compile?
-**GCC:** `gcc -O3 -s esolang.c -o psint`
+**GCC:** `gcc -O3 -s esolang.c -o psint`<br>
 **CLANG:** `clang -O3 -s esolang.c -o psint`
 
 ## How to use?
 
-RUN MODE: `./psint ./test.psint`
-STEP MODE: `./psint ./test.psint -s`
+**NORMAL MODE:** `./psint ./test.psint`<br>
+**STEP MODE:** `./psint ./test.psint -s`
 
