@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psint Interpreter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top">
+        <h1 class="title_header"><b>Psint Interpreter</b></h1>
+    <br>
+    <div class="center-container">
+        <textarea id="source-code" placeholder="Psint code here..." spellcheck="false"></textarea>
+    </div>
+
+    <div class="view_mode_container">
+        <div id="view-mode"></div>
+    </div>
+
+    </div>
+    <div class="buttons">
+        <button class="btn" id="run">Run</button>
+        <button class="btn" id="stop">Stop</button>
+    </div>
+    <div class="bottom">
+        <label id="output"></label>
+        <div class="output-bottom">
+            <textarea id="input-code" placeholder="Input..." spellcheck="false"></textarea>
+            <textarea id="steps" placeholder="Steps..." spellcheck="false">999</textarea>
+        </div>
+    </div>
+    <script src="js/interpreter.js"></script>
+</body>
+</html>
