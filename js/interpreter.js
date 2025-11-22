@@ -203,7 +203,7 @@ const run_instruction = async function (vm, ast) {
     vm.registers.dad = C;
     vm.registers.speed = A;
   } else if (node.kind === "input") {
-    if (input.value.length <= 0) { return; };
+    if (input.value.length <= 0) { vm.registers[vm.current_register] = 0; return; };
     vm.registers[vm.current_register] = input.value[0].charCodeAt(0);
     input.value = input.value.slice(1);
   }
