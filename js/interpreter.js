@@ -107,6 +107,7 @@ let step_per = 1;
 let input = null;
 let display = null;
 let source = null;
+let chunks_ran = 0;
 
 function highlightRange(start, end) {
   const text = source.value;
@@ -142,7 +143,11 @@ const run_instruction = async function (vm, ast) {
       vm.registers[vm.current_register] = 255;
   } else if (node.kind === "loop") {
     while (vm.registers[vm.current_register] !== 0 && running) {
-      await new Promise((r) => setTimeout(r, 1000 / step_per));
+      chunks_ran += 1
+      if (chunks_ran > step_per) {
+        chunks_ran = 0
+        await new Promise((r) => setTimeout(r, 1000 / step_per));
+      }
       const body = [...node.value];
       steps++;
       output.textContent =
@@ -160,7 +165,11 @@ const run_instruction = async function (vm, ast) {
         vm.output;
 
       while (body.length > 0 && running) {
-        await new Promise((r) => setTimeout(r, 1000 / step_per));
+         chunks_ran += 1
+          if (chunks_ran > step_per) {
+            chunks_ran = 0
+            await new Promise((r) => setTimeout(r, 1000 / step_per));
+          }
         output.textContent =
           "Steps: " +
           steps +
@@ -216,7 +225,11 @@ async function execute(output) {
   const vm = new PSINT_VM();
 
   while (ast.length > 0 && running) {
-    await new Promise((r) => setTimeout(r, 1000 / step_per));
+    chunks_ran += 1
+      if (chunks_ran > step_per) {
+        chunks_ran = 0
+        await new Promise((r) => setTimeout(r, 1000 / step_per));
+      }
     output.textContent =
       "Steps: " +
       steps +
